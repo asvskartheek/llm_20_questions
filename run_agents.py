@@ -1,3 +1,11 @@
+"""
+This module implements the main game logic for a 20 Questions-style game using AI agents.
+
+The game involves two agents: a Guesser and an Answerer. The Answerer knows a secret keyword,
+and the Guesser tries to guess it by asking up to 20 yes/no questions. The module handles
+the turn-based interaction between these agents and determines the game's outcome.
+"""
+
 from utils import (
     GUESSER, ANSWERER, ACTIVE, INACTIVE, DONE, ASK, GUESS,
     select_keyword, guesser_agent, answerer_agent, Agent, keyword_guessed
@@ -8,6 +16,18 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def run_game(debug=False):
+    """
+    Execute a single game of 20 Questions between AI agents.
+
+    This function manages the game flow, including keyword selection, agent initialization,
+    turn-taking, and game termination conditions.
+
+    Args:
+        debug (bool): If True, enables debug mode for more verbose output.
+
+    Returns:
+        None
+    """
     # Select a keyword
     category, keyword, alts = select_keyword()
     logging.info(f"Selected keyword: {keyword} (Category: {category})")
